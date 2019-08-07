@@ -1,27 +1,34 @@
+<div class="row">
 <%= form_with(model: tweet, local: true) do |form| %>
-  <% if tweet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
-
-      <ul>
-      <% tweet.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="col-md-offset-4 col-md-4">
+    <% if tweet.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
+  
+        <ul>
+        <% tweet.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="form-group">
+      <%# current_user.user %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :message %>
-    <%= form.text_field :message %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <div class="form-group">
+      <%= form.label :message %>
+      <%= form.text_field :message, class: "form-control" %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :user_id %>
+      <%= form.number_field :user_id, class: "form-control" %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.submit "Submit", class: "form-control" %>
+    </div>
   </div>
 <% end %>
+</div>
