@@ -25,6 +25,27 @@ class EpicenterController < ApplicationController
     redirect_to show_user_path(id: params[:id])
   end
 
+  def following
+    @user = User.find(params[:id])
+    @users = []
+
+    User.all.each do |user|
+      if @user.following.include?(user.id)
+        @users.push(user)
+      end
+    end
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @users = []
+
+    User.all.each do |user|
+      if user.following.include?(@user.id)
+        @users.push(user)
+      end
+    end
+  end
   def unfollow
     current_user.following.delete(params[:id].to_i)
     current_user.save
