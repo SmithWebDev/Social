@@ -1,2 +1,11 @@
-<h1>Epicenter#feed</h1>
-<p>Find me in app/views/epicenter/feed.html.erb</p>
+<h1>@<%= current_user.username %>'s Twitter Feed'</h1>
+<p>Here is what your "friends" are saying:</p>
+
+<div>
+  <% @following_tweets.each do |tweet| %>
+    <div>
+      <p><%= link_to "@"+tweet.user.username, show_user_path(id: tweet.user.id) %></p>
+      <p><%= tweet.message.html_safe %></p>
+    </div>
+  <% end %>
+</div>

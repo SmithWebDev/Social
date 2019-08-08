@@ -2,7 +2,7 @@
 
 <p>
   <strong>User:</strong>
-  @<%= @tweet.user.username %>
+  <%= link_to  @tweet.user.username, show_user_path(id: @tweet.user.id) %>
 </p>
 <p>
   <strong>Message:</strong>
