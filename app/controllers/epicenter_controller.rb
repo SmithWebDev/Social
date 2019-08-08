@@ -1,6 +1,9 @@
 class EpicenterController < ApplicationController
   before_action :authenticate_user!
 
+  def all_users
+    @users = User.all
+  end
   def feed
     @following_tweets = []
 
